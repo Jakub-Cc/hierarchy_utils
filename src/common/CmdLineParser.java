@@ -10,10 +10,10 @@ import java.nio.file.Path;
 
 
 public abstract class CmdLineParser {
-    private CommandLineParser parser;
-    private CommandLine cmd;
-    private Options options;
-    private HelpFormatter helpText;
+    protected CommandLineParser parser;
+    protected CommandLine cmd;
+    protected Options options;
+    protected HelpFormatter helpText;
 
     public CmdLineParser() {
         parser = new BasicParser();
@@ -174,21 +174,24 @@ public abstract class CmdLineParser {
         helpText.printHelp( "java -jar [jar_name].jar", options );
     }
 
-    protected Path parseInputFile()
-    {
+    protected Path parseInputFile() {
+        return parsePath("i");
+    }
+
+    protected Path parsePath(String optionName) {
         File inputFile = null;
-        if(cmd.hasOption('i'))
+        if(cmd.hasOption(optionName))
         {
-            inputFile = new File(cmd.getOptionValue('i'));
+            inputFile = new File(cmd.getOptionValue(optionName));
             if(!inputFile.exists() || inputFile.isDirectory())
             {
-                System.err.println("Input file shoud be existing file!");
+                System.err.println(optionName + " file should be existing file!");
                 System.exit(1);
             }
         }
         else
         {
-            System.err.println("No input file specified! Use -i option.");
+            System.err.println("No file specified! Use " + optionName + " option.");
             System.exit(1);
         }
         return inputFile.toPath();
