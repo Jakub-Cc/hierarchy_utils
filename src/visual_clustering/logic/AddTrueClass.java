@@ -1,14 +1,13 @@
-package visual_clustering.utils;
+package visual_clustering.logic;
 
 import basic_hierarchy.interfaces.Hierarchy;
 import basic_hierarchy.interfaces.Instance;
-import basic_hierarchy.reader.GeneratedCSVReader;
 
 import java.util.Arrays;
 import java.util.Iterator;
 import java.util.LinkedList;
 
-public class VisualClusteringUtils {
+public class AddTrueClass {
 
     public static void addGroundTruthAssignmentToHierarchy(Hierarchy destination, Hierarchy sourceWithGroundTruth) {
         LinkedList<Instance>  dest = new LinkedList<>(destination.getRoot().getSubtreeInstances());

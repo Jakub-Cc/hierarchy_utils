@@ -1,10 +1,10 @@
-package visual_clustering.utils;
+package visual_clustering.parameters;
 
 import common.Parameters;
 
 import java.nio.file.Path;
 
-public class VisualClusteringParameters implements Parameters {
+public class AddTrueClassParameters implements Parameters {
     private Path destinationDataFilePath;
     private Path sourceDataFilePath;
     private boolean instanceName;

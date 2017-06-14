@@ -197,7 +197,7 @@ public abstract class CmdLineParser {
         return inputFile.toPath();
     }
 
-    protected Path parseOutputFile()
+    protected Path parseOutputDirectory()
     {
         File outputFolder = null;
         if(cmd.hasOption('o'))

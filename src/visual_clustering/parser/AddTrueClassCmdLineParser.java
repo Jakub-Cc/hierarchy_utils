@@ -1,13 +1,14 @@
-package visual_clustering.utils;
+package visual_clustering.parser;
 
 import common.CmdLineParser;
 import common.Parameters;
 import org.apache.commons.cli.Option;
 import org.apache.commons.cli.OptionBuilder;
+import visual_clustering.parameters.AddTrueClassParameters;
 
-public class VisualClusteringCmdLineParser extends CmdLineParser {
+public class AddTrueClassCmdLineParser extends CmdLineParser {
 
-    public VisualClusteringCmdLineParser() {
+    public AddTrueClassCmdLineParser() {
         super();
     }
 
@@ -15,14 +16,14 @@ public class VisualClusteringCmdLineParser extends CmdLineParser {
     protected void createOptions() {
         Option destination = OptionBuilder.withArgName("file path")
                 .hasArgs(1)
-                .isRequired(false)
+                .isRequired(true)
                 .withDescription("Path to file that lacks of true class attribute, but has assigned class.")
                 .withLongOpt("destination")
                 .create('d');
 
         Option source = OptionBuilder.withArgName("file path")
                 .hasArgs(1)
-                .isRequired(false)
+                .isRequired(true)
                 .withDescription("Path to file that contains true class attribute, that will be transferred to destination file.")
                 .withLongOpt("source")
                 .create('s');
@@ -37,7 +38,7 @@ public class VisualClusteringCmdLineParser extends CmdLineParser {
 
     @Override
     protected void parseParameters(Parameters paramsToSet) {
-        VisualClusteringParameters params = (VisualClusteringParameters)paramsToSet;
+        AddTrueClassParameters params = (AddTrueClassParameters)paramsToSet;
 
         params.setDestinationDataFilePath(parsePath("d"));
         params.setSourceDataFilePath(parsePath("s"));
