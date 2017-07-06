@@ -8,6 +8,8 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 
+import static common.CommonUtils.deleteDirectory;
+
 
 public abstract class CmdLineParser {
     protected CommandLineParser parser;
@@ -209,14 +211,16 @@ public abstract class CmdLineParser {
                 System.err.println(outputFolderName + " should be an path to directory!");
                 System.exit(1);
             }
-            if(!outputFolder.exists())
-            {
-                System.out.println(outputFolderName + " doesn't exist, creating folder.");
-                try {
-                    Files.createDirectories(outputFolder.toPath());
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
+            else if(outputFolder.isDirectory()) {
+                System.out.println("Output directory exist. Cleaning..");
+                deleteDirectory(outputFolder.toPath());
+            }
+
+            System.out.println("Creating " + outputFolderName);
+            try {
+                Files.createDirectories(outputFolder.toPath());
+            } catch (IOException e) {
+                e.printStackTrace();
             }
         }
         else
