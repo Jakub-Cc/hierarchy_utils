@@ -1,0 +1,6 @@
+[submodule "submodules/hkplusplus"]
+	path = submodules/hkplusplus
+	url = https://github.com/toSterr/hkplusplus.git
+[submodule "submodules/hiervis"]
+	path = submodules/hiervis
+	url = https://github.com/toSterr/hiervis.git
