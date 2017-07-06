@@ -18,7 +18,7 @@ public class RunAddTrueClass {
         AddTrueClassParameters params = new AddTrueClassParameters();
         parser.parse(args, params);
 
-        GeneratedCSVReader reader = new GeneratedCSVReader(true);
+        GeneratedCSVReader reader = new GeneratedCSVReader();
         try {
             Hierarchy sourceHierarchy = reader.load(params.getSourceDataFilePath().toString(), params.isInstanceName(),
                     true, true, false, true);
