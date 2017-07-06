@@ -27,3 +27,5 @@ hs_err_pid*
 # intelliJ folder and files
 .idea/
 hierarchy_utils.iml
+src/META-INF/
+src/prune_and_run_manifest/
